@@ -1,4 +1,5 @@
 const db = require('../database');
+const matchQuery = require('./SQL/matchQuery');
 
 const boardgamesController = {};
 
@@ -65,7 +66,28 @@ boardgamesController.deleteFavorite = async (req, res, next) => {
     next();
   } catch (err) {
     next({
-      log: `boardgamesController.addFavorite: ERROR ${err}`,
+      log: `boardgamesController.deleteFavorite: ERROR ${err}`,
+      status: 500,
+      message: { err: 'database error occured' },
+    });
+  }
+};
+
+boardgamesController.getMatches = async (req, res, next) => {
+  const { userid, gameid1, gameid2, gameid3 } = req.params;
+  try {
+    const result = await db.query(matchQuery, [
+      userid,
+      gameid1,
+      gameid2,
+      gameid3,
+    ]);
+    res.locals.matches = result.rows;
+    console.log(res.locals.matches);
+    next();
+  } catch (err) {
+    next({
+      log: `boardgamesController.getMatches: ERROR ${err}`,
       status: 500,
       message: { err: 'database error occured' },
     });

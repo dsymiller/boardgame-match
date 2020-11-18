@@ -1,7 +1,7 @@
 import React from 'react';
 
 function BoardgameRow(props) {
-  const { game, isFavorite, gameid, handleFavorite } = props;
+  const { game, isFavorite, gameid, handleFavorite, updatePicks } = props;
   let icon = (
     <svg
       onClick={() => handleFavorite(gameid, isFavorite)}
@@ -24,7 +24,11 @@ function BoardgameRow(props) {
   return (
     <tr className="boardgame-row">
       <td>
-        <input type="checkbox" />
+        <input
+          gameid={gameid}
+          onClick={(e) => updatePicks(e)}
+          type="checkbox"
+        />
       </td>
       <td>{icon}</td>
       <td>

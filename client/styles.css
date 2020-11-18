@@ -9,7 +9,9 @@ html {
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: lightblue;
-  margin: 0;
+  margin: 0 auto;
+  width: 1200px;
+  padding: 20px;
 }
 .error {
   color: red;
@@ -21,4 +23,26 @@ th {
 }
 td img {
   height: 100%;
+}
+header h3 {
+  font-weight: 300;
+  display: inline;
+  margin-right: 50px;
+}
+#matches {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+  margin: 20px;
+}
+#matches label {
+  margin-right: 30px;
+}
+#matches span {
+  margin: 0 10px;
+}
+.username,
+.match-results {
+  color: darkblue;
+  font-weight: 700;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import BoardgameRow from './BoardgameRow';
 
 function BoardgameTable(props) {
-  const { boardgames, favorites, handleFavorite } = props;
+  const { boardgames, favorites, handleFavorite, updatePicks } = props;
   const rows = boardgames.map((game) => {
     const isFavorite = favorites.includes(game._id);
     return (
@@ -14,6 +14,7 @@ function BoardgameTable(props) {
         handleFavorite={(gameid, isFavorite) =>
           handleFavorite(gameid, isFavorite)
         }
+        updatePicks={(e) => updatePicks(e)}
       />
     );
   });

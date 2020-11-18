@@ -7,8 +7,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      user: 3,
-      username: '',
+      user: 1,
+      username: 'Derek',
       loggedIn: true,
     };
   }

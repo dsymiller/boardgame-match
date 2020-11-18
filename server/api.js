@@ -46,4 +46,13 @@ router.delete(
   }
 );
 
+// handles getting matches
+router.get(
+  '/boardgames/matches/:userid/:gameid1/:gameid2/:gameid3',
+  boardgamesController.getMatches,
+  (req, res) => {
+    res.status(200).json(res.locals);
+  }
+);
+
 module.exports = router;
