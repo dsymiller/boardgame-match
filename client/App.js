@@ -1,6 +1,35 @@
 import React, { Component } from 'react';
+import Login from './Login';
+import Signup from './Signup';
+import BoardgameContainer from './BoardgameContainer';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      user: 3,
+      username: '',
+      loggedIn: true,
+    };
+  }
+
+  handleLogin(user, username) {
+    const newState = {
+      user,
+      username,
+      loggedIn: true,
+    };
+    this.setState(newState);
+  }
+
+  handleLogout() {
+    const newState = {
+      user: '',
+      loggedIn: false,
+    };
+    this.setState(newState);
+  }
+
   serverTest() {
     fetch('/api/test', {
       method: 'POST',
@@ -10,12 +39,28 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <h1>Hello World</h1>
-        <button onClick={this.serverTest}>server test</button>
-      </div>
-    );
+    if (!this.state.loggedIn) {
+      return (
+        <div>
+          <Login
+            handleLogin={(user, username) => this.handleLogin(user, username)}
+          />
+          <Signup
+            handleLogin={(user, username) => this.handleLogin(user, username)}
+          />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <BoardgameContainer
+            username={this.state.username}
+            user={this.state.user}
+            handleLogout={() => handleLogout()}
+          />
+        </div>
+      );
+    }
   }
 }
 

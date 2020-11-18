@@ -11,3 +11,14 @@ body {
   background-color: lightblue;
   margin: 0;
 }
+.error {
+  color: red;
+}
+td,
+th {
+  border: 1px solid darkblue;
+  height: 60px;
+}
+td img {
+  height: 100%;
+}
